@@ -5,6 +5,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
@@ -74,4 +76,12 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void calculated_total_must_be_100_for_items_of_price_30_and_70(){
+        restaurant.addToMenu("Sweet corn soup",30);
+        restaurant.addToMenu("Vegetable lasagne", 70);
+        List<String> selectedItemsNames=Arrays.asList("Sweet corn soup","Vegetable lasagne");
+        assertEquals(100, restaurant.calculateTotal(selectedItemsNames));
+
+    }
 }
