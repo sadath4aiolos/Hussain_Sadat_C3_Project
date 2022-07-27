@@ -65,7 +65,13 @@ public class Restaurant {
     }
 
     public int calculateTotal(List<String> names){
-        return 0;
+        int total=0;
+       for(Item item:menu){
+        if(names.contains(item.getName())){
+           total +=item.getPrice();
+        }
+       }
+       return total;
 
     }
  
